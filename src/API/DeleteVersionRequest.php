@@ -23,6 +23,6 @@ class DeleteVersionRequest extends ApiRequest
             ],
         ]);
 
-        return $response;
+        return json_decode($response->getBody());
     }
 }

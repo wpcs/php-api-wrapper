@@ -40,6 +40,6 @@ class GetTenantsRequest extends ApiRequest
             'query' => $query,
         ]);
 
-        return $response;
+        return json_decode($response->getBody());
     }
 }

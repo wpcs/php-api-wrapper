@@ -71,15 +71,15 @@ class CreateVersionRequest extends ApiRequest
         $response = $client->request('POST', 'v1/versions', [
             'json' => $body,
         ]);
+        $responseBody = json_decode($response->getBody());
 
         if($this->snapshotPath) {
-            $responseBody = json_decode($response->getBody());
 
             $s3Client = new Client([ 'timeout'  => 300 ]);
             $data = Psr7\Utils::tryFopen($this->snapshotPath, 'r');
             $s3Client->request('PUT', $responseBody->uploadUrl, ['body' => $data]);    
         }
 
-        return $response;
+        return $responseBody;
     }
 }
