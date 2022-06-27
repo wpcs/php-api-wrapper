@@ -76,7 +76,8 @@ abstract class ApiRequest
 
     private function setupAuthentication()
     {
-        if (!$this->region){
+        if (!$this->region)
+        {
             $this->region = $this->getAuthValue('WPCS_API_REGION');
         }
 
