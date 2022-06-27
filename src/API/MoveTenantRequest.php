@@ -1,5 +1,5 @@
 <?php
-namespace WPCS\API\Tenants;
+namespace WPCS\API;
 
 use WPCS\API\ApiRequest;
 

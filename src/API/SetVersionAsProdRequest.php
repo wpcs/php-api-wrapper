@@ -1,9 +1,9 @@
 <?php
-namespace WPCS\API\Versions;
+namespace WPCS\API;
 
 use WPCS\API\ApiRequest;
 
-class DeleteVersionRequest extends ApiRequest
+class SetVersionAsProdRequest extends ApiRequest
 {
     private $versionId;
 
@@ -17,8 +17,8 @@ class DeleteVersionRequest extends ApiRequest
     {
         $client = $this->getClient();
 
-        $response = $client->request('DELETE', 'v1/versions', [
-            'query' => [
+        $response = $client->request('PUT', 'v1/versions/production', [
+            'json' => [
                 'versionId' => $this->versionId,
             ],
         ]);
@@ -26,3 +26,4 @@ class DeleteVersionRequest extends ApiRequest
         return $response;
     }
 }
+

@@ -1,9 +1,9 @@
 <?php
-namespace WPCS\API\Tenants;
+namespace WPCS\API;
 
 use WPCS\API\ApiRequest;
 
-class DeleteTenantRequest extends ApiRequest
+class GetTenantsRequest extends ApiRequest
 {
     private $tenantId;
     private $externalId;
@@ -36,11 +36,10 @@ class DeleteTenantRequest extends ApiRequest
             $query['externalId'] = $this->externalId;
         }
 
-        $response = $client->request('DELETE', 'v1/tenants', [
+        $response = $client->request('GET', 'v1/tenants', [
             'query' => $query,
         ]);
 
         return $response;
     }
 }
-

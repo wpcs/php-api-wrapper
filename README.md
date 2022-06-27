@@ -6,7 +6,7 @@ Example usage:
 
 ```php
 $exportPath = './archive.tgz';
-$request = new \WPCS\API\Versions\CreateVersionRequest();
+$request = new \WPCS\API\CreateVersionRequest();
 $response = $request
     ->setRegion('us1')
     ->setApiKey('an-api-key')
