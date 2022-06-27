@@ -36,6 +36,11 @@ class DeleteTenantRequest extends ApiRequest
             $query['externalId'] = $this->externalId;
         }
 
+        if(!$this->tenantId && !$this->externalId)
+        {
+            throw new \Exception('Must set either a tenant ID or an external ID to delete a tenant.');
+        }
+
         $response = $client->request('DELETE', 'v1/tenants', [
             'query' => $query,
         ]);

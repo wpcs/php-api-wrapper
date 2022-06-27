@@ -43,6 +43,16 @@ class MoveTenantRequest extends ApiRequest
             $query['externalId'] = $this->externalId;
         }
 
+        if(!$this->tenantId && !$this->externalId)
+        {
+            throw new \Exception('Must set either a tenant ID or an external ID to move a tenant.');
+        }
+
+        if(!$this->targetVersionId)
+        {
+            throw new \Exception('Must set a target version ID to move the tenant to.');
+        }
+
         $response = $client->request('POST', 'v1/tenants/version', [
             'query' => $query,
             'json' => [
