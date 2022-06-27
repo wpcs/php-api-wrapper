@@ -8,17 +8,41 @@ class GetVersionsRequest extends ApiRequest
     private $versionId;
     private $versionName;
 
-    public function setVersionId($versionId)
+    /**
+     * Sets the ID of the version to get information on. Without this or setVersionName, this request will return the whole list of version in the product.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $versionId
+     * @return void
+     */
+    public function setVersionId(string $versionId)
     {
         $this->versionId = $versionId;
         return $this;
     }
 
-    public function setVersionName($versionName)
+    /**
+     * Sets the name of the version to get information on. Without this or setVersionId, this request will return the whole list of version in the product.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $versionName
+     * @return void
+     */
+    public function setVersionName(string $versionName)
     {
         $this->versionName = $versionName;
         return $this;
     }
+
+    /**
+     * Sends the request.
+     * 
+     * @since 1.0.0
+     *
+     * @return void
+     */
     public function send()
     {
         $client = $this->getClient();

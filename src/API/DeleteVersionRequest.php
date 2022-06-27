@@ -7,12 +7,27 @@ class DeleteVersionRequest extends ApiRequest
 {
     private $versionId;
 
-    public function setVersionId($versionId)
+    /**
+     * Sets the ID of the version to delete.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $versionId
+     * @return DeleteVersionRequest
+     */
+    public function setVersionId(string $versionId)
     {
         $this->versionId = $versionId;
         return $this;
     }
 
+    /**
+     * Sends the request.
+     * 
+     * @since 1.0.0
+     *
+     * @return void
+     */
     public function send()
     {
         $client = $this->getClient();

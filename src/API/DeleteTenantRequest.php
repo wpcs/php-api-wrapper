@@ -8,18 +8,41 @@ class DeleteTenantRequest extends ApiRequest
     private $tenantId;
     private $externalId;
 
-    public function setTenantId($tenantId)
+    /**
+     * Sets the ID of the tenant to delete.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $tenantId
+     * @return DeleteTenantRequest
+     */
+    public function setTenantId(string $tenantId)
     {
         $this->tenantId = $tenantId;
         return $this;
     }
 
-    public function setExternalId($externalId)
+    /**
+     * Sets the external ID of the tenant to delete.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $externalId
+     * @return DeleteTenantRequest
+     */
+    public function setExternalId(string $externalId)
     {
         $this->externalId = $externalId;
         return $this;
     }
 
+    /**
+     * Sends the request.
+     * 
+     * @since 1.0.0
+     *
+     * @return void
+     */
     public function send()
     {
         $client = $this->getClient();

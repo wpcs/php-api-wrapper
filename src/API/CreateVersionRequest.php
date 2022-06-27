@@ -13,36 +13,83 @@ class CreateVersionRequest extends ApiRequest
     private $snapshotId;
     private $snapshotPath;
 
-    public function setName($name)
+    /**
+     * Sets the name of the version in WPCS.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $name
+     * @return CreateVersionRequest
+     */
+    public function setName(string $name)
     {
         $this->name = $name;
         return $this;
     }
     
-    public function setWordPressVersion($wordpressVersion)
+    /**
+     * Sets the version of WordPress the WPCS version will use.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $wordpressVersion
+     * @return CreateVersionRequest
+     */
+    public function setWordPressVersion(string $wordpressVersion)
     {
         $this->wordpressVersion = $wordpressVersion;
         return $this;
     }
     
-    public function setPhpVersion($phpVersion)
+    /**
+     * Sets the version of PHP that the WPCS version will run on.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $phpVersion
+     * @return CreateVersionRequest
+     */
+    public function setPhpVersion(string $phpVersion)
     {
         $this->phpVersion = $phpVersion;
         return $this;
     }
     
-    public function setSnapshotId($snapshotId)
+    /**
+     * Sets the snapshot ID of the snapshot that the version should be based on.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $snapshotId
+     * @return CreateVersionRequest
+     */
+    public function setSnapshotId(string $snapshotId)
     {
         $this->snapshotId = $snapshotId;
         return $this;
     }
     
-    public function setSnapshotPath($snapshotPath)
+    /**
+     * Sets a local snapshot path that is used to create the version with. The local snapshot will be uploaded to WPCS.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $snapshotPath
+     * @return CreateVersionRequest
+     */
+    public function setSnapshotPath(string $snapshotPath)
     {
         $this->snapshotPath = $snapshotPath;
         return $this;
     }
 
+    /**
+     * Sends the request.
+     * 
+     * @since 1.0.0
+     *
+     * @return void
+     */
     public function send()
     {
         if($this->snapshotId && $this->snapshotPath)

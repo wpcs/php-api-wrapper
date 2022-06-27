@@ -15,19 +15,43 @@ abstract class ApiRequest
 
     abstract protected function send();
 
-    public function setRegion($region)
+    /**
+     * Sets the region that the API call should be directed to. This should be the region your product is in, eg. eu1 or us1.
+     *
+     * @since 1.0.0
+     *
+     * @param string $region
+     * @return void
+     */
+    public function setRegion(string $region)
     {
         $this->region = $region;
         return $this;
     }
 
-    public function setApiKey($apiKey)
+    /**
+     * Set the API key for your product.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $apiKey
+     * @return void
+     */
+    public function setApiKey(string $apiKey)
     {
         $this->apiKey = $apiKey;
         return $this;
     }
 
-    public function setApiSecret($apiSecret)
+    /**
+     * Sets the API secret for your product.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $apiSecret
+     * @return void
+     */
+    public function setApiSecret(string $apiSecret)
     {
         $this->apiSecret = $apiSecret;
         return $this;

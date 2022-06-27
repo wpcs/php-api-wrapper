@@ -9,24 +9,55 @@ class MoveTenantRequest extends ApiRequest
     private $externalId;
     private $targetVersionId;
 
-    public function setTenantId($tenantId)
+    /**
+     * Sets the tenant ID of the tenant to move.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $tenantId
+     * @return MoveTenantRequest
+     */
+    public function setTenantId(string $tenantId)
     {
         $this->tenantId = $tenantId;
         return $this;
     }
 
-    public function setExternalId($externalId)
+    /**
+     * Sets the external ID of the tenant to move.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $externalId
+     * @return MoveTenantRequest
+     */
+    public function setExternalId(string $externalId)
     {
         $this->externalId = $externalId;
         return $this;
     }
 
-    public function setTargetVersionId($targetVersionId)
+    /**
+     * Sets the ID of the version to move the tenants to.
+     * 
+     * @since 1.0.0
+     *
+     * @param string $targetVersionId
+     * @return MoveTenantRequest
+     */
+    public function setTargetVersionId(string $targetVersionId)
     {
         $this->targetVersionId = $targetVersionId;
         return $this;
     }
 
+    /**
+     * Sends the request.
+     * 
+     * @since 1.0.0
+     *
+     * @return void
+     */
     public function send()
     {
         $client = $this->getClient();
