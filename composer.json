@@ -15,5 +15,6 @@
         "platform": {
             "php": "7.2.5"
          }
-    }
+    },
+    "license": "MIT"
 }
