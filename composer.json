@@ -1,0 +1,19 @@
+{
+    "name": "wpcs/php-api-wrapper",
+    "description": "A PHP API wrapper to easily communicate with the WPCS.io API.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "WPCS\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.1",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.2.5"
+         }
+    }
+}
