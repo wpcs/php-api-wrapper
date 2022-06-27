@@ -1,2 +1,19 @@
 # php-api-wrapper
-An API wrapper for PHP
+
+A PHP API wrapper to easily communicate with the WPCS.io API.
+
+Example usage:
+
+```php
+$exportPath = './archive.tgz';
+$request = new \WPCS\API\Versions\CreateVersionRequest();
+$response = $request
+    ->setRegion('us1')
+    ->setApiKey('an-api-key')
+    ->setApiSecret('an-api-secret')
+    ->setName('v1.0.0')
+    ->setWordPressVersion('6.0')
+    ->setPhpVersion('7.4')
+    ->setSnapshotPath($exportPath)
+    ->send();
+```
