@@ -30,7 +30,7 @@ abstract class ApiRequest
     }
 
     /**
-     * Set the API key for your product.
+     * Sets the API key for your product.
      * 
      * @since 1.0.0
      *
@@ -57,7 +57,7 @@ abstract class ApiRequest
         return $this;
     }
 
-    public function getClient()
+    protected function getClient()
     {
         $this->setupAuthentication();
 
