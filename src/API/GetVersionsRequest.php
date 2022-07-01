@@ -41,7 +41,7 @@ class GetVersionsRequest extends ApiRequest
      * 
      * @since 1.0.0
      *
-     * @return void
+     * @return array
      */
     public function send()
     {

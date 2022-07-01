@@ -26,7 +26,7 @@ class DeleteVersionRequest extends ApiRequest
      * 
      * @since 1.0.0
      *
-     * @return void
+     * @return object
      */
     public function send()
     {

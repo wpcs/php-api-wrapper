@@ -13,6 +13,12 @@ abstract class ApiRequest
     private $apiKey;
     private $apiSecret;
 
+    /**
+     * Sends the request
+     *
+     * @abstract
+     * @return mixed
+     */
     abstract protected function send();
 
     /**
@@ -21,7 +27,7 @@ abstract class ApiRequest
      * @since 1.0.0
      *
      * @param string $region
-     * @return void
+     * @return $this
      */
     public function setRegion(string $region)
     {
@@ -35,7 +41,7 @@ abstract class ApiRequest
      * @since 1.0.0
      *
      * @param string $apiKey
-     * @return void
+     * @return $this
      */
     public function setApiKey(string $apiKey)
     {
@@ -49,7 +55,7 @@ abstract class ApiRequest
      * @since 1.0.0
      *
      * @param string $apiSecret
-     * @return void
+     * @return $this
      */
     public function setApiSecret(string $apiSecret)
     {
