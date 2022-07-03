@@ -34,6 +34,10 @@ Example:
 define('WPCS_API_REGION', 'us1'); // Or eu1, depending on your region.
 define('WPCS_API_KEY', 'an-api-key'); // The API Key you retrieved from the console
 define('WPCS_API_SECRET', 'an-api-secret'); // The API Secret you retrieved from the console
+
+// No need to set the region, API key and secret using functions now
+$request = new \WPCS\API\GetTenantsRequest();
+$response = $request->send();
 ```
 
 ## Example usage
