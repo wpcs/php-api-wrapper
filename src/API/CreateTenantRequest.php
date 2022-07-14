@@ -229,6 +229,11 @@ class CreateTenantRequest extends ApiRequest
         if($this->snapshotPath)
         {
             $body['uploadCustomSnapshot'] = true;
+            $extension = pathinfo($this->snapshotPath, PATHINFO_EXTENSION);
+            if($extension === "zip")
+            {
+                $body['asZip'] = true;
+            }
         }
 
         $response = $client->request('POST', 'v1/tenants', [

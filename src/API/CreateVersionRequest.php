@@ -113,6 +113,11 @@ class CreateVersionRequest extends ApiRequest
         if($this->snapshotPath)
         {
             $body['useCustomUpload'] = true;
+            $extension = pathinfo($this->snapshotPath, PATHINFO_EXTENSION);
+            if($extension === "zip")
+            {
+                $body['asZip'] = true;
+            }
         }
 
         $response = $client->request('POST', 'v1/versions', [
