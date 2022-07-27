@@ -38,6 +38,12 @@ class DeleteVersionRequest extends ApiRequest
             ],
         ]);
 
-        return json_decode($response->getBody());
+        $responseBody = json_decode($response->getBody());
+        if($response->getStatusCode() !== 200)
+        {
+            throw new \Exception($responseBody->message, $responseBody->statusCode);
+        }
+
+        return $responseBody;
     }
 }

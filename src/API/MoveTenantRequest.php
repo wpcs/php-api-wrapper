@@ -90,8 +90,14 @@ class MoveTenantRequest extends ApiRequest
                 'targetVersionId' => $this->targetVersionId,
             ],
         ]);
+        $responseBody = json_decode($response->getBody());
 
-        return json_decode($response->getBody());
+        if($response->getStatusCode() !== 200)
+        {
+            throw new \Exception($responseBody->message, $responseBody->statusCode);
+        }
+
+        return $responseBody;
     }
 }
 

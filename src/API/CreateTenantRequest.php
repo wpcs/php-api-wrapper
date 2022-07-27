@@ -241,7 +241,13 @@ class CreateTenantRequest extends ApiRequest
         ]);
         $responseBody = json_decode($response->getBody());
 
-        if($this->snapshotPath) {
+        if($response->getStatusCode() !== 200)
+        {   
+            throw new \Exception($responseBody->message, $responseBody->statusCode);
+        }
+
+        if($this->snapshotPath)
+        {
             $s3Client = new Client([ 'timeout'  => 300 ]);
             $data = Psr7\Utils::tryFopen($this->snapshotPath, 'r');
             $s3Client->request('PUT', $responseBody->uploadUrl, ['body' => $data]);    

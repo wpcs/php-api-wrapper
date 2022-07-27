@@ -62,7 +62,13 @@ class GetTenantsRequest extends ApiRequest
         $response = $client->request('GET', 'v1/tenants', [
             'query' => $query,
         ]);
+        $responseBody = json_decode($response->getBody());
 
-        return json_decode($response->getBody());
+        if($response->getStatusCode() !== 200)
+        {
+            throw new \Exception($responseBody->message, $responseBody->statusCode);
+        }
+
+        return $responseBody;
     }
 }
