@@ -1,12 +1,6 @@
 <?php
 namespace WPCS\API;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Handler\CurlHandler;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
-use Psr\Http\Message\RequestInterface;
-
 abstract class ApiRequest 
 {
     private $region;
@@ -82,18 +76,13 @@ abstract class ApiRequest
             throw new \Exception('An API secret must be set before the client can be built.');
         }
 
-        $stack = new HandlerStack();
-        $stack->setHandler(new CurlHandler());
-        $stack->push(Middleware::mapRequest(function (RequestInterface $request) {
-            $token = base64_encode("{$this->apiKey}:{$this->apiSecret}");
-            return $request->withHeader('Authorization', "Basic $token");
-        }));
-
-        return new Client([
-            'handler' => $stack,
+        $client = new HttpClient([
             'base_uri' => "https://api.{$this->region}.wpcs.io",
             'timeout'  => 20,
         ]);
+        $client->set_basic_auth($this->apiKey, $this->apiSecret);
+
+        return $client;
     }
 
     private function getAuthValue($value_name)

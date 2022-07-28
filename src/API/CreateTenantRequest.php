@@ -2,8 +2,6 @@
 namespace WPCS\API;
 
 use WPCS\API\ApiRequest;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7;
 
 class CreateTenantRequest extends ApiRequest
 {
@@ -249,9 +247,8 @@ class CreateTenantRequest extends ApiRequest
 
         if($this->snapshotPath)
         {
-            $s3Client = new Client([ 'timeout'  => 300 ]);
-            $data = Psr7\Utils::tryFopen($this->snapshotPath, 'r');
-            $s3Client->request('PUT', $responseBody->uploadUrl, ['body' => $data]);    
+            $s3Client = new HttpClient();
+            $s3Client->upload_file($responseBody->uploadUrl, $this->snapshotPath);
         }
 
         return $responseBody;
