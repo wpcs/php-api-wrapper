@@ -14,7 +14,7 @@ class GetVersionsRequest extends ApiRequest
      * @since 1.0.0
      *
      * @param string $versionId
-     * @return void
+     * @return GetVersionsRequest
      */
     public function setVersionId(string $versionId)
     {
@@ -28,7 +28,7 @@ class GetVersionsRequest extends ApiRequest
      * @since 1.0.0
      *
      * @param string $versionName
-     * @return void
+     * @return GetVersionsRequest
      */
     public function setVersionName(string $versionName)
     {
