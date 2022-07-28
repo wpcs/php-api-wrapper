@@ -10,6 +10,7 @@ class CreateVersionRequest extends ApiRequest
     private $phpVersion;
     private $snapshotId;
     private $snapshotPath;
+    private $uploadProgressCallback;
 
     /**
      * Sets the name of the version in WPCS.
@@ -82,6 +83,20 @@ class CreateVersionRequest extends ApiRequest
     }
 
     /**
+     * Sets a callback to be used for progress updates during the snapshot upload.
+     * 
+     * @since 1.1.0
+     *
+     * @param callable $callback
+     * @return CreateVersionRequest
+     */
+    public function setUploadProgressCallback(callable $callback)
+    {
+        $this->uploadProgressCallback = $callback;
+        return $this;
+    }
+
+    /**
      * Sends the request.
      * 
      * @since 1.0.0
@@ -132,6 +147,11 @@ class CreateVersionRequest extends ApiRequest
         if($this->snapshotPath)
         {
             $s3Client = new HttpClient();
+            if(!empty($this->uploadProgressCallback))
+            {
+                $s3Client->set_progress_callback($this->uploadProgressCallback);
+            }
+
             $s3Client->upload_file($responseBody->uploadUrl, $this->snapshotPath);
         }
 
